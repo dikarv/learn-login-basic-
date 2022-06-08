@@ -2,6 +2,7 @@ import GlobalType from "./GlobalType";
 
 const initalState = {
   page: false,
+  token : '1234'
 };
 
 
