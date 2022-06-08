@@ -2,13 +2,14 @@ import GlobalType from "./GlobalType";
 
 const initalState = {
   page: false,
-  token : '1234'
+  name : '',
+  token : ''
 };
 
 
 const rootReducer = (state = initalState, action) => {
   if (action.type === GlobalType.LOGIN_TRUE) {
-    return { ...state, page: true };
+    return { ...state, page: true, name : action.kacang, token : action.kacang_token };
   } else {
     return state;
   }
