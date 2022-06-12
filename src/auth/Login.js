@@ -18,6 +18,7 @@ const Login = () => {
     //dia adalah connec tversi react redux gan
 
     const page = useSelector((state) => state.page)
+    const loading = useSelector((state) => state.loading)
     const dispatch = useDispatch(); 
 
     let name = '';
@@ -39,10 +40,13 @@ const Login = () => {
 
         if (email === "admin@example.com" && password === "12345678") {
             try {
+                dispatch({type : GlobalType.LOADING_TRUE})
                 const response = await axios.post('http://localhost:3000/api/auth/login', {email, password})
                 console.log(response);
                 token = response.data.token
                 name = response.data.data.name
+                dispatch({type : GlobalType.LOADING_FALSE})
+
 
                 
             } catch (error) {
@@ -59,7 +63,8 @@ const Login = () => {
     return(
         <>
        {
-           page ? <Home/> :
+           page ? <Home/> : loading ? <h2>Loading..</h2> : 
+           
            <div>
            <form onSubmit={handleLogin}>
                <h2>Login</h2>
@@ -71,9 +76,9 @@ const Login = () => {
                    Password
                    <input onChange={handlePassword} />
                </label>
-               <button type='submit'>LOgIn</button>
+               <button type='submit'>Login</button>
            </form>
-       </div>
+       </div> 
        }
         </>
     )

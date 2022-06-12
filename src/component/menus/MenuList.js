@@ -6,7 +6,7 @@ import GlobalType from '../Redux/GlobalType';
 
 
 
-const Home = () => {
+const MenuList = () => {
 
     //sesion storeage seperti state dai dapat menyimpan d=toekn dengan cara setItem dan getItem untuk mendapatkan nya thats amazing
     // const token = sessionStorage.getItem('token')
@@ -82,4 +82,4 @@ const Home = () => {
     );
 }
 
-export default Home
+export default MenuList
